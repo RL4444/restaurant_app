@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Image, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
 import ReviewsList from '../components/ReviewsList';
 import yelp from '../api/yelp';
 

@@ -15,13 +15,31 @@ const SearchScreen = () => {
 
     return (
         <View style={styles.container}>
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} fetchResults={fetchResults} />
-            {error.length > 0 && <Text style={styles.error}>{error}</Text>}
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <List data={filterResultsByPrice(2)} title={'Middle of the Road'} requesting={requesting} />
-                <List data={filterResultsByPrice(3)} title={'Top Tier'} requesting={requesting} />
-                <List data={filterResultsByPrice(1)} title={'Cost Effective'} requesting={requesting} />
-            </ScrollView>
+            {requesting !== false ? (
+                <View
+                    style={{
+                        height: '100%',
+                        position: 'absolute',
+                        backgroundColor: '#ff4242',
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Text style={{ color: 'white', fontSize: 20 }}>Loading App</Text>
+                </View>
+            ) : (
+                <>
+                    <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} fetchResults={fetchResults} />
+                    {error.length > 0 && <Text style={styles.error}>{error}</Text>}
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <List data={filterResultsByPrice(2)} title={'Middle of the Road'} requesting={requesting} />
+                        <List data={filterResultsByPrice(3)} title={'Top Tier'} requesting={requesting} />
+                        <List data={filterResultsByPrice(1)} title={'Cost Effective'} requesting={requesting} />
+                    </ScrollView>
+                </>
+            )}
         </View>
     );
 };

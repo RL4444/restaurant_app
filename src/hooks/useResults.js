@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 
 export default () => {
     const [results, setResults] = useState([]);
-    const [requesting, setRequesting] = useState(false);
+    const [requesting, setRequesting] = useState(true);
     const [error, setError] = useState('');
 
     const [location, setLocation] = useState({
@@ -14,7 +14,6 @@ export default () => {
     });
 
     const fetchResults = async (term) => {
-        setRequesting(true);
         setResults([]);
         setError('');
         try {
