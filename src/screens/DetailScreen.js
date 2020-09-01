@@ -52,7 +52,14 @@ const DetailScreen = ({ navigation }) => {
                             <Text style={styles.closed}>Closed</Text>
                         )}
                     </View>
-                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                        }}
+                    >
                         <View style={styles.addressWrapper}>
                             <FlatList
                                 data={detail.location.display_address}
@@ -112,7 +119,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 32,
         fontWeight: '700',
-        width: 200,
+        width: 240,
     },
     headline: {
         display: 'flex',

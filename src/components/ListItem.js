@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         width: 230,
         height: 180,
-        // justifyContent: 'space-around',
     },
     imageStyle: {
         width: 215,
