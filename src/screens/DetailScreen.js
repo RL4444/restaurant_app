@@ -82,6 +82,7 @@ export default DetailScreen;
 const styles = StyleSheet.create({
     container: {
         padding: 10,
+        flex: 1,
     },
     title: {
         fontSize: 32,
@@ -109,7 +110,6 @@ const styles = StyleSheet.create({
     image: {
         marginRight: 10,
         width: 200,
-        height: 200,
     },
     open: {
         fontSize: 14,

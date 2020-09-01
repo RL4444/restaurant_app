@@ -2,7 +2,7 @@ import React from 'react';
 
 import { View, FlatList, Linking, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
 
-const ReviewsList = ({ data, requesting }) => {
+const ReviewsList = ({ data }) => {
     return (
         <View style={styles.container}>
             <Text style={{ fontSize: 20, fontWeight: '600' }}>Reviews</Text>
@@ -40,19 +40,19 @@ export default ReviewsList;
 const styles = StyleSheet.create({
     container: {
         marginTop: 12,
+        flex: 1,
     },
     listStyle: {
         display: 'flex',
         height: 'auto',
-        paddingBottom: 70,
+        marginTop: 6,
         alignSelf: 'stretch',
     },
     reviewWrapper: {
-        marginTop: 12,
+        marginTop: 20,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'flex-start',
-        flex: 1,
     },
     reviewImage: {
         marginTop: 4,
@@ -80,5 +80,6 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         marginLeft: 'auto',
         color: 'grey',
+        marginTop: 12,
     },
 });
