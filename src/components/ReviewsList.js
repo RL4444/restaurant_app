@@ -12,7 +12,6 @@ const ReviewsList = ({ data, requesting }) => {
                 data={data}
                 keyExtractor={(review) => review.id}
                 renderItem={({ item }) => {
-                    console.log('review prof img srcs ', item.user.image_url);
                     return (
                         <TouchableOpacity onPress={() => Linking.openURL(String(item.url))}>
                             <View style={styles.reviewWrapper}>
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         height: 'auto',
         paddingBottom: 70,
+        alignSelf: 'stretch',
     },
     reviewWrapper: {
         marginTop: 12,

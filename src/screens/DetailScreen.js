@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 32,
         fontWeight: '700',
+        width: 200,
     },
     headline: {
         display: 'flex',
