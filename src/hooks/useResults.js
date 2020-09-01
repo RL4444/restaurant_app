@@ -13,12 +13,12 @@ export default () => {
         longitude: 0,
     });
 
-    const fetchResults = async (term) => {
+    const fetchResults = async (longitude, latitude, term) => {
         setResults([]);
         setError('');
         try {
             const { data } = await yelp.get(
-                `/search?limit=50&latitude=${location.latitude}&longitude=${location.longitude}&term=${term}`
+                `/search?limit=50&latitude=${latitude}&longitude=${longitude}&term=${term}`
             );
             setResults([...data.businesses]);
         } catch (err) {
@@ -37,9 +37,9 @@ export default () => {
             }
             let locationFound = await Location.getCurrentPositionAsync({});
             setLocation({ ...locationFound.coords });
-            fetchResults('italian');
+            fetchResults(locationFound.coords.longitude, locationFound.coords.latitude, 'italian');
         })();
     }, []);
 
-    return [fetchResults, results, error, requesting];
+    return [location, fetchResults, results, error, requesting];
 };

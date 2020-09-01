@@ -8,7 +8,7 @@ import useResults from '../hooks/useResults';
 
 const SearchScreen = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [fetchResults, results, error, requesting] = useResults();
+    const [location, fetchResults, results, error, requesting] = useResults();
 
     const filterResultsByPrice = (price) =>
         results.filter((result) => result.price !== undefined && result.price.length === price);
@@ -31,7 +31,12 @@ const SearchScreen = () => {
                 </View>
             ) : (
                 <>
-                    <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} fetchResults={fetchResults} />
+                    <SearchBar
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        location={location}
+                        fetchResults={fetchResults}
+                    />
                     {error.length > 0 && <Text style={styles.error}>{error}</Text>}
                     <ScrollView showsVerticalScrollIndicator={false}>
                         <List data={filterResultsByPrice(2)} title={'Middle of the Road'} requesting={requesting} />

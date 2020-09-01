@@ -3,13 +3,13 @@ import { View, StyleSheet, TextInput, Text } from 'react-native';
 
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 
-const SearchScreen = ({ searchTerm, setSearchTerm, fetchResults }) => {
+const SearchScreen = ({ location, searchTerm, setSearchTerm, fetchResults }) => {
     return (
         <View style={styles.container}>
             <View style={styles.searchWrapper}>
                 <Feather name='search' size={24} color='black' />
                 <TextInput
-                    onEndEditing={() => fetchResults(searchTerm)}
+                    onEndEditing={() => fetchResults(location.longitude, location.latitude, searchTerm)}
                     autoCapitalize='none'
                     autoCorrect={false}
                     value={searchTerm}

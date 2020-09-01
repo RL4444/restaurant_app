@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
+
+import { View, Image, Text, StyleSheet, FlatList, Linking } from 'react-native';
 import ReviewsList from '../components/ReviewsList';
 import yelp from '../api/yelp';
 
@@ -49,14 +52,36 @@ const DetailScreen = ({ navigation }) => {
                             <Text style={styles.closed}>Closed</Text>
                         )}
                     </View>
-                    <View style={styles.addressWrapper}>
-                        <FlatList
-                            data={detail.location.display_address}
-                            keyExtractor={(line) => line}
-                            renderItem={({ item }) => {
-                                return <Text style={styles.address}>{item}</Text>;
-                            }}
-                        />
+                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={styles.addressWrapper}>
+                            <FlatList
+                                data={detail.location.display_address}
+                                keyExtractor={(line) => line}
+                                renderItem={({ item }) => {
+                                    return <Text style={styles.address}>{item}</Text>;
+                                }}
+                            />
+                        </View>
+                        <View style={{ display: 'flex', flexDirection: 'row' }}>
+                            <Entypo
+                                onPress={() => {
+                                    Linking.openURL(`tel:${detail.phone}`);
+                                }}
+                                name='phone'
+                                size={40}
+                                color='black'
+                            />
+                            <View style={{ marginLeft: 6 }}>
+                                <Fontisto
+                                    onPress={() => {
+                                        Linking.openURL(detail.url);
+                                    }}
+                                    name='world-o'
+                                    size={40}
+                                    color='black'
+                                />
+                            </View>
+                        </View>
                     </View>
                     <FlatList
                         style={styles.flatListWrapper}
